@@ -16,6 +16,11 @@ const ContainerImg = styled.div`
   padding: 1.5rem;
 `;
 
+const ContainerForm = styled.div`
+  background-color: white;
+  padding: 5rem;
+`;
+
 function App() {
   return (
    <Container>
@@ -29,6 +34,9 @@ function App() {
         />        
       </ContainerImg>
 
+      <ContainerForm>
+
+      </ContainerForm>
    </Container>
   );
 }
