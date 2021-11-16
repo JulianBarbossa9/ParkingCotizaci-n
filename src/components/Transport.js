@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 import imgUno from '../images/motocicleta.svg';
 
 const ContainerTrans = styled.div`
-    max-width: 450px;
+    max-width: 350px;
     margin: auto;
 
 `;

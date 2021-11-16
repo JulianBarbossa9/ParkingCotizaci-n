@@ -1,5 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
+import Formu from './components/Formu';
 import styled from '@emotion/styled';
 import Transport from './components/Transport';
 
@@ -18,7 +19,7 @@ const ContainerImg = styled.div`
 
 const ContainerForm = styled.div`
   background-color: white;
-  padding: 5rem;
+  padding: 4rem;
 `;
 
 function App() {
@@ -35,8 +36,9 @@ function App() {
       </ContainerImg>
 
       <ContainerForm>
-
+        <Formu />
       </ContainerForm>
+
    </Container>
   );
 }
