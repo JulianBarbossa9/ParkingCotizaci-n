@@ -1,5 +1,6 @@
 import React ,{Fragment, useState} from 'react';
 import styled from '@emotion/styled';
+import {receiveHours} from '../helper'
 
 const Time = styled.div`
     display:flex;
@@ -43,6 +44,19 @@ const Button = styled.button`
     }
 `;
 
+const Error = styled.div`
+    background-color: #C70039 ;
+    font-size: 20px;
+    color: white;
+    padding: 1rem;
+    width: 44%;
+    margin: 15px 25px;
+    border-radius: 15px;
+    border: none;
+    text-align: center;
+
+`;
+
 const Formu = () => {
 
     /**
@@ -54,29 +68,58 @@ const Formu = () => {
         hourTwo:'',
         type:'motorcycle'
     });
+    
+    const [error ,saveError ] = useState(false) ;
 
     /**
-     * Create función handle
+     * Extraer los valores
+     */
+     const {hourOne, hourTwo, type} = data;
+
+
+    /**
+     * Create función handle, aca relleno el objeto
      */
 
     const handleChange = e => {
-        console.log(e.target.name);
+        // console.log(e.target.value);
         
         savaData({
             ...data,
             [e.target.name]: e.target.value
         })
     }
-    // console.log(data)
-    /**
-     * Extraer los valores
-     */
-    const {hourEntry, hourDeparture, type} = data;
 
+    const quoteParkin = e => {
+        e.preventDefault();
+
+        if ( hourOne.trim() === '' || hourTwo.trim() === '' || type.trim() === ''){
+            saveError(true);
+            return; 
+        }
+
+        saveError(false);
+
+        // Obtener las horas 
+
+        const hourTotals = receiveHours(hourOne, hourTwo);
+        console.log(hourTotals);
+
+    }
+
+
+    // console.log(data)
+
+    
+    
 
     return (  
         <Fragment>
-            <form>
+            <form
+                onSubmit={quoteParkin}
+            >
+                {error?<Error>Please fill in all fields </Error> :null}
+
                 <Time>
                     <Label>Hour Entry: </Label>
                         <Input
@@ -101,7 +144,7 @@ const Formu = () => {
                 </Time>
                 
                 <Time>
-                    <Label>Type of vehicle</Label>
+                    <Label>Type of vehicle: </Label>
                     <InputRatio
                         type="radio"
                         name="type"
@@ -120,7 +163,7 @@ const Formu = () => {
                         /> Motorcycle
                 </Time>
 
-                <Button type="button">Quote</Button>
+                <Button type="submit">Quote</Button>
             </form>
         </Fragment>
     );
