@@ -1,4 +1,4 @@
-import React ,{Fragment} from 'react';
+import React ,{Fragment, useState} from 'react';
 import styled from '@emotion/styled';
 
 const Time = styled.div`
@@ -18,7 +18,7 @@ const Input = styled.input`
     padding: 1rem;
     border : 2px solid #0f112e;
     border-radius: 20px;
-    /* -webkit-appearance:none; */
+    -webkit-appearance:none;
 `;
 
 const InputRatio = styled.input`
@@ -44,26 +44,60 @@ const Button = styled.button`
 `;
 
 const Formu = () => {
+
+    /**
+     * Create state 
+     */
+
+    const [data, savaData] = useState({
+        hourOne: '',
+        hourTwo:'',
+        type:'motorcycle'
+    });
+
+    /**
+     * Create función handle
+     */
+
+    const handleChange = e => {
+        console.log(e.target.name);
+        
+        savaData({
+            ...data,
+            [e.target.name]: e.target.value
+        })
+    }
+    // console.log(data)
+    /**
+     * Extraer los valores
+     */
+    const {hourEntry, hourDeparture, type} = data;
+
+
     return (  
         <Fragment>
             <form>
                 <Time>
-                    <Label>Entry Time: </Label>
-                    <Input
-                        type="time"
-                        name="hourEntry"
-                        className="hour"
-                        value="entry"
-                    />
+                    <Label>Hour Entry: </Label>
+                        <Input
+                            type="time"
+                            name="hourOne"
+                            className="hour"
+                            onChange={handleChange}
+                            // value={hourEntry}
+                        />
                 </Time>
+
                 <Time>
-                    <Label>Departure Time: </Label>
-                    <Input
-                        type="time"
-                        name="hourDeparture"
-                        className="hour"
-                        value="entryDeparture"
-                    />
+                    <Label>Hour Departure: </Label>
+                        <Input
+                            type="time"
+                            name="hourTwo"
+                            className="hour"
+                            onChange={handleChange}
+                            // value={hourDeparture}
+                            
+                        />
                 </Time>
                 
                 <Time>
@@ -72,13 +106,18 @@ const Formu = () => {
                         type="radio"
                         name="type"
                         value="car"
-                    /> Car
+                        onChange={handleChange}
+                        checked={type === "car"}
+                        /> Car
 
                     <InputRatio
                         type="radio"
                         name="type"
                         value="motorcycle"
-                    /> Motorcycle
+                        onChange={handleChange}
+                        // value="motorcycle"
+                        checked={type === "motorcycle"}
+                        /> Motorcycle
                 </Time>
 
                 <Button type="button">Quote</Button>
