@@ -16,10 +16,14 @@ export function receiveHours (hourOne, hourTwo){
         return `0${hoursF}:${minutesF}`
     } else if (hoursF >= 10 && minutesF < 10){
         return `${hoursF}:0${minutesF}`
-    } else {
+    } else if (hoursF > 10 && minutesF > 10 ){
+        return `${hoursF}:${minutesF}`
+    }else {
         return `${hoursF}:${minutesF}`
     }
 
     // let hoursCont = `${hoursF}: ${minutesF}`;
     //  return hoursCont;
 }
+
+

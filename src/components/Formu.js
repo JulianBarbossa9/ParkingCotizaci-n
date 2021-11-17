@@ -1,6 +1,7 @@
 import React ,{Fragment, useState} from 'react';
 import styled from '@emotion/styled';
-import {receiveHours} from '../helper'
+import {receiveHours, } from '../helper';
+import {priceMinute } from '../price';
 
 const Time = styled.div`
     display:flex;
@@ -103,7 +104,9 @@ const Formu = () => {
         // Obtener las horas 
 
         const hourTotals = receiveHours(hourOne, hourTwo);
-        console.log(hourTotals);
+        // console.log(hourTotals);
+        const priceFinal = priceMinute(hourOne,hourTwo, type);
+        console.log(priceFinal); 
 
     }
 
