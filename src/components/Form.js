@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 import {receiveHours, priceMinute} from '../helper';
 
 
+
 const Time = styled.div`
     display:flex;
     margin: 10px 30px;
@@ -11,12 +12,12 @@ const Time = styled.div`
 `;
 
 const Label = styled.label`
-    flex:0 0 100px;
+    flex:0 0 110px;
 `;
 
 const Input = styled.input`
     display: block;
-    width: 30%;
+    width: 100%;
     padding: 1rem;
     border : 2px solid #0f112e;
     border-radius: 20px;
@@ -24,13 +25,13 @@ const Input = styled.input`
 `;
 
 const InputRatio = styled.input`
-    margin: 0 1rem;
+    margin: 0 0.5rem;
 `;
 
 const Button = styled.button`
     background-color: #FB5B3B;
     font-size: 20px;
-    width: 48%;
+    width: 100%;
     padding: 1rem;
     color: white;
     font-weight:bold;
@@ -58,7 +59,9 @@ const Error = styled.div`
 
 `;
 
-const Form = () => {
+
+
+const Form = ({guardarDatosForm}) => {
 
     /**
      * Create state 
@@ -76,6 +79,10 @@ const Form = () => {
      * Extraer los valores
      */
      const {hourOne, hourTwo, type} = data;
+
+    //  const [ resumen , guardarResumen] = useState({});
+
+    //  const {hourOne} = resumen;
 
 
     /**
@@ -107,6 +114,11 @@ const Form = () => {
         // console.log(hourTotals);
         const priceFinal = priceMinute(hourOne,hourTwo, type);
         console.log(priceFinal); 
+        guardarDatosForm({
+            horasParking : hourTotals,
+            precioParking : priceFinal,
+            data
+        });
 
     }
 
@@ -115,40 +127,37 @@ const Form = () => {
             <form
                 onSubmit={quoteParkin}
             >
-                {error?<Error>Please fill in all fields </Error> :null}
+                {error?<Error>Por favor llene todos los Campos</Error> :null}
 
                 <Time>
-                    <Label>Hour Entry: </Label>
+                    <Label>Hora Entrada: </Label>
                         <Input
                             type="time"
                             name="hourOne"
                             className="hour"
                             onChange={handleChange}
-                            
                         />
                 </Time>
 
                 <Time>
-                    <Label>Hour Departure: </Label>
+                    <Label>Hora Salida: </Label>
                         <Input
                             type="time"
                             name="hourTwo"
                             className="hour"
                             onChange={handleChange}
-                            
-                            
                         />
                 </Time>
                 
                 <Time>
-                    <Label>Type of vehicle: </Label>
+                    <Label>Tipo de Vehiculo: </Label>
                     <InputRatio
                         type="radio"
                         name="type"
                         value="car"
                         onChange={handleChange}
                         checked={type === "car"}
-                        /> Car
+                        /> Carro
 
                     <InputRatio
                         type="radio"
@@ -156,11 +165,13 @@ const Form = () => {
                         value="motorcycle"
                         onChange={handleChange}
                         checked={type === "motorcycle"}
-                        /> Motorcycle
+                        /> Motocicleta
                 </Time>
 
                 <Button type="submit">Quote</Button>
             </form>
+
+           
         </Fragment>
     );
 }

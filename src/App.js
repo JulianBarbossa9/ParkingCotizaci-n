@@ -1,8 +1,9 @@
-import React from 'react';
+import React,{ useState} from 'react';
 import Header from './components/Header';
 import Form from './components/Form';
 import styled from '@emotion/styled';
 import Transport from './components/Transport';
+import Result from './components/Result';
 
 
 const Container = styled.div`
@@ -20,9 +21,23 @@ const ContainerImg = styled.div`
 const ContainerForm = styled.div`
   background-color: white;
   padding: 4rem;
+  display: flex;
 `;
 
 function App() {
+  
+  const [ resumen , guardarDatosForm] = useState({
+    horasParking:'',
+    precioParking:'',
+    data: {
+      hourOne:'',
+      hourTwo:'',
+      type:''
+    }
+  });
+
+  const {data, horasParking, precioParking} = resumen;
+  
   return (
    <Container>
       <Header 
@@ -36,7 +51,15 @@ function App() {
       </ContainerImg>
 
       <ContainerForm>
-        <Form />
+        <Form 
+          guardarDatosForm={guardarDatosForm}
+        />
+        <Result 
+          data={data}
+          horasParking={horasParking}
+          precioParking={precioParking}
+        />
+       
       </ContainerForm>
 
    </Container>
