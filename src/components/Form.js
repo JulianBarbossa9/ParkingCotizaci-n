@@ -1,7 +1,7 @@
 import React ,{Fragment, useState} from 'react';
 import styled from '@emotion/styled';
-import {receiveHours, } from '../helper';
-import {priceMinute } from '../price';
+import {receiveHours, priceMinute} from '../helper';
+
 
 const Time = styled.div`
     display:flex;
@@ -58,7 +58,7 @@ const Error = styled.div`
 
 `;
 
-const Formu = () => {
+const Form = () => {
 
     /**
      * Create state 
@@ -110,12 +110,6 @@ const Formu = () => {
 
     }
 
-
-    // console.log(data)
-
-    
-    
-
     return (  
         <Fragment>
             <form
@@ -130,7 +124,7 @@ const Formu = () => {
                             name="hourOne"
                             className="hour"
                             onChange={handleChange}
-                            // value={hourEntry}
+                            
                         />
                 </Time>
 
@@ -141,7 +135,7 @@ const Formu = () => {
                             name="hourTwo"
                             className="hour"
                             onChange={handleChange}
-                            // value={hourDeparture}
+                            
                             
                         />
                 </Time>
@@ -161,7 +155,6 @@ const Formu = () => {
                         name="type"
                         value="motorcycle"
                         onChange={handleChange}
-                        // value="motorcycle"
                         checked={type === "motorcycle"}
                         /> Motorcycle
                 </Time>
@@ -172,4 +165,4 @@ const Formu = () => {
     );
 }
  
-export default Formu;
+export default Form;

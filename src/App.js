@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import Formu from './components/Formu';
+import Form from './components/Form';
 import styled from '@emotion/styled';
 import Transport from './components/Transport';
 
@@ -36,7 +36,7 @@ function App() {
       </ContainerImg>
 
       <ContainerForm>
-        <Formu />
+        <Form />
       </ContainerForm>
 
    </Container>
