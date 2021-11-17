@@ -22,6 +22,7 @@ const ContainerForm = styled.div`
   background-color: white;
   padding: 4rem;
   display: flex;
+  border-radius: 0 0 30px 30px;
 `;
 
 function App() {
@@ -41,12 +42,12 @@ function App() {
   return (
    <Container>
       <Header 
-        title="Parking +: Tarifa Parqueaderos"
+        title="Parking + : Tarifa Parqueaderos"
       />
 
       <ContainerImg>
         <Transport
-
+          data={data}
         />        
       </ContainerImg>
 

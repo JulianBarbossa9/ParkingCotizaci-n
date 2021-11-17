@@ -3,10 +3,11 @@ import styled from '@emotion/styled';
 
 const ContainerHeader = styled.header`
     background-color: #0f112e;
-    padding: 10px;
+    padding: 2rem;
     font-weight: bold;
     font-family: 'Prompt', sans-serif;
     color:white;
+    border-radius: 30px 30px 0 0;
     
 `;
 
@@ -16,7 +17,7 @@ const TextHeader = styled.h1`
     align-items: center;
     text-align: center;
     margin: 10px 0;
-    font-size: 1.5rem;
+    font-size: 2rem;
 `;
 
 const Header = ({title}) => {

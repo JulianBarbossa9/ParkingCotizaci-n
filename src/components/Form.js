@@ -70,7 +70,7 @@ const Form = ({guardarDatosForm}) => {
     const [data, savaData] = useState({
         hourOne: '',
         hourTwo:'',
-        type:'motorcycle'
+        type:'car'
     });
     
     const [error ,saveError ] = useState(false) ;
@@ -80,9 +80,7 @@ const Form = ({guardarDatosForm}) => {
      */
      const {hourOne, hourTwo, type} = data;
 
-    //  const [ resumen , guardarResumen] = useState({});
 
-    //  const {hourOne} = resumen;
 
 
     /**
@@ -111,9 +109,9 @@ const Form = ({guardarDatosForm}) => {
         // Obtener las horas 
 
         const hourTotals = receiveHours(hourOne, hourTwo);
-        // console.log(hourTotals);
+        
         const priceFinal = priceMinute(hourOne,hourTwo, type);
-        console.log(priceFinal); 
+       
         guardarDatosForm({
             horasParking : hourTotals,
             precioParking : priceFinal,
@@ -168,7 +166,7 @@ const Form = ({guardarDatosForm}) => {
                         /> Motocicleta
                 </Time>
 
-                <Button type="submit">Quote</Button>
+                <Button type="submit">Calcular</Button>
             </form>
 
            
