@@ -1,4 +1,5 @@
 import React ,{Fragment, useState} from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import {receiveHours, priceMinute} from '../helper';
 
@@ -173,5 +174,9 @@ const Form = ({guardarDatosForm}) => {
         </Fragment>
     );
 }
- 
+
+Form.propTypes = {
+    guardarDatosForm: PropTypes.func.isRequired
+}
+
 export default Form;

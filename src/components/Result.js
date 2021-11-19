@@ -1,4 +1,5 @@
 import React,{ Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 
@@ -71,6 +72,13 @@ const Result = ({data, horasParking, precioParking}) => {
             </AlertData>
         </Fragment>
     );
+}
+
+Result.propTypes = {
+    data: PropTypes.object.isRequired,
+    horasParking: PropTypes.string.isRequired,
+    precioParking: PropTypes.string.isRequired
+
 }
  
 export default Result;

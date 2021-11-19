@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import imgUno from '../images/motocicleta.svg';
 import imgDos from '../images/automovil.svg';
@@ -27,9 +28,13 @@ const Transport = ({data}) => {
     
     return ( 
         <ContainerTrans>
-            <img src={selecImage(type)} alt="motocicleta"></img>
+            <img src={selecImage(type)} alt="carro/motocicleta"></img>
         </ContainerTrans>
      );
+}
+
+Transport.propTypes = {
+    data: PropTypes.object.isRequired
 }
  
 export default Transport;
